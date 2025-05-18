@@ -1,7 +1,7 @@
 # Telegram Bot on Aiogram with Redis and Docker
 
 ## 📦 Project structure
-
+```
 aiogram_redis_bot/
 ├── bot/
 │ ├── init.py
@@ -18,7 +18,7 @@ aiogram_redis_bot/
 ├── Dockerfile # App Dockerfile
 ├── docker-compose.yml # App + Redis setup
 └── requirements.txt # Python dependencies
-
+```
 
 ## 🚀 Description
 
@@ -49,7 +49,7 @@ Each command lives in its own file and defines:
 ```python
 def register_handlers(router: Router):
     router.message(commands=["..."])(your_handler)
-
+```
 You can add a new command by dropping a file here.
 
 bot/services/redis_client.py
@@ -64,17 +64,20 @@ Dockerfile: Builds the bot image
 docker-compose.yml: Combines the bot and Redis
 
 Example .env file:
+```
 BOT_TOKEN=123456:ABCDEF...
 ADMIN_CHAT_ID=123456789
 REDIS_HOST=redis
 REDIS_PORT=6379
 START_MESSAGE=some text start
+```
 
 Run with:
-
+```
 docker-compose up --build
+```
 
-🧠 Core Logic
+## 🧠 Core Logic
 All user messages (text, media, stickers) are forwarded to an admin chat.
 
 If a user replies to a message in chat, the bot tracks reply context using Redis.
@@ -83,5 +86,5 @@ Admin can reply to forwarded messages in the admin chat, and the bot routes repl
 
 Media groups are handled as first-part forward + remaining as a single sendMediaGroup to preserve context and minimize clutter.
 
-🛡 License
+## 🛡 License
 This project is licensed under the MIT License — feel free to use, modify, and distribute.
