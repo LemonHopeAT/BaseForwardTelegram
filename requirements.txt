@@ -1,0 +1,2 @@
+aiogram==3.*
+redis>=4.5.0

@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  redis:
+    image: redis:6-alpine
+    ports:
+      - "6379:6379"
+    restart: always
+
+  bot:
+    build: .
+    env_file: .env
+    depends_on:
+      - redis
+    restart: always
